@@ -31,7 +31,7 @@ sudo pacman -S --needed --noconfirm \
   librsvg \
   xdotool
 
-sudo pacman -S --needed --noconfirm nvidia nvidia-utils lib32-nvidia-utils
+sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils linux-headers
 sudo pacman -S --needed --noconfirm vulkan-icd-loader lib32-vulkan-icd-loader vulkan-tools mesa mesa-utils
 sudo pacman -S --needed --noconfirm xorg-server xorg-xinit xorg-xrandr steam dwm xterm unclutter
 ##################################
