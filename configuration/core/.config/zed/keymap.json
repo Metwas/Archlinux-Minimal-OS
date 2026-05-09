@@ -1,0 +1,77 @@
+[
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-r": [
+                            "projects::OpenRecent",
+                            {
+                                   "create_new_window": false,
+                            },
+                     ],
+              },
+       },
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-escape": "terminal_panel::Toggle",
+              },
+       },
+       {
+              "context": "Pane",
+              "bindings": {
+                     "ctrl-q ctrl-right": "pane::SplitRight",
+              },
+       },
+       {
+              "context": "Pane",
+              "bindings": {
+                     "ctrl-q ctrl-left": "pane::SplitLeft",
+              },
+       },
+       {
+              "context": "Pane",
+              "bindings": {
+                     "ctrl-q ctrl-down": "pane::SplitDown",
+              },
+       },
+       {
+              "context": "Pane",
+              "bindings": {
+                     "ctrl-q ctrl-up": "pane::SplitUp",
+              },
+       },
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-e ctrl-right": "workspace::ActivatePaneRight",
+              },
+       },
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-e ctrl-left": "workspace::ActivatePaneLeft",
+              },
+       },
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-e ctrl-up": "workspace::ActivatePaneUp",
+              },
+       },
+       {
+              "context": "Workspace",
+              "bindings": {
+                     "ctrl-e ctrl-down": "workspace::ActivatePaneDown",
+              },
+       },
+       {
+              "unbind": {
+                     "ctrl-q": "zed::Quit",
+              },
+       },
+       {
+              "unbind": {
+                     "ctrl-e": "zed::Quit",
+              },
+       },
+]

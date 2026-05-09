@@ -1,6 +1,23 @@
 {
-       "ui_font_weight": 500.0,
-       "icon_theme": "Catppuccin Latte",
+       "cli_default_open_behavior": "existing_window",
+       "outline_panel": {
+              "dock": "left",
+       },
+       "collaboration_panel": {
+              "dock": "left",
+       },
+       "git_panel": {
+              "dock": "left",
+       },
+       "which_key": {
+              "delay_ms": 50,
+       },
+       "show_wrap_guides": true,
+       "rounded_selection": true,
+       "unnecessary_code_fade": 0.5,
+       "auto_update": false,
+       "ui_font_weight": 700.0,
+       "icon_theme": "Colored Zed Icons Theme Dark",
        "disable_ai": true,
        "buffer_line_height": {
               "custom": 1.99,
@@ -8,6 +25,16 @@
        "edit_predictions": {
               "enabled_in_text_threads": false,
        },
+       "language_servers": [
+              "vtsls",
+              "html",
+              "css",
+              "rust-analyzer",
+              "clangd",
+              "!eslint",
+              "!tailwindcss",
+              "!tsserver",
+       ],
        "languages": {
               "TypeScript": {
                      "format_on_save": "on",
@@ -15,26 +42,45 @@
               },
               "Rust": {
                      "format_on_save": "on",
+              },
+              "HTML": {
+                     "format_on_save": "on",
                      "formatter": "prettier",
+              },
+              "CSS": {
+                     "format_on_save": "on",
+                     "formatter": "prettier",
+              },
+              "JavaScript": {
+                     "format_on_save": "on",
+                     "formatter": "prettier",
+              },
+              "Python": {
+                     "format_on_save": "on",
+              },
+              "Shell Script": {
+                     "format_on_save": "on",
               },
               "C++": {
                      "format_on_save": "on",
-                     "formatter": "prettier",
+              },
+              "C": {
+                     "format_on_save": "on",
               },
        },
        "show_edit_predictions": false,
        "agent": {
+              "dock": "right",
               "expand_terminal_card": false,
               "expand_edit_card": false,
               "enable_feedback": false,
               "single_file_review": false,
               "model_parameters": [],
        },
-       "zoomed_padding": true,
        "use_system_window_tabs": false,
        "bottom_dock_layout": "contained",
        "preview_tabs": {
-              "enabled": true,
+              "enabled": false,
        },
        "tab_bar": {
               "show_nav_history_buttons": false,
@@ -50,6 +96,7 @@
               "show_onboarding_banner": false,
        },
        "project_panel": {
+              "dock": "left",
               "button": false,
               "hide_root": true,
               "scrollbar": {
@@ -60,7 +107,7 @@
               "modal_max_width": "xlarge",
        },
        "buffer_font_weight": 900.0,
-       "buffer_font_family": ".ZedMono",
+       "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
        "telemetry": {
               "diagnostics": false,
               "metrics": false,
@@ -74,21 +121,16 @@
        "minimap": {
               "thumb_border": "left_open",
               "thumb": "always",
-              "show": "auto",
+              "show": "never",
        },
-       "hover_popover_delay": 300,
+       "hover_popover_delay": 500,
        "hover_popover_enabled": true,
        "current_line_highlight": "all",
        "cursor_shape": "bar",
-       "cursor_blink": true,
+       "cursor_blink": false,
        "show_whitespaces": "trailing",
        "tab_size": 7,
        "ui_font_size": 14,
-       "buffer_font_size": 11.0,
-       "theme": "Dark Knight",
-       "profiles": {
-              "light": {
-                     "theme": "One Light",
-              },
-       },
+       "buffer_font_size": 10.0,
+       "theme": "Dark Knight Opaque",
 }
