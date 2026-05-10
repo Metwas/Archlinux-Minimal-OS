@@ -9,6 +9,19 @@ USERID="$UID"
 sudo usermod -aG video,input,render,wheel,seat $USER
 ##################################
 
+################################## Multilib
+echo "Enable Multilib..."
+FILE="/etc/pacman.conf"
+
+if grep -q "^\s*\[multilib\]" "$FILE"; then
+  sudo sed -i '/^\s*#\?\s*\[multilib\]/,/^\s*#\?\s*Include/ s/^\s*#\s*//' "$FILE"
+else
+  printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' | sudo tee -a "$FILE" > /dev/null
+fi
+
+sudo pacman -Syu --noconfirm
+##################################
+
 ################################## Update
 echo "System Updating..."
 sudo pacman -Sc --noconfirm
@@ -33,19 +46,6 @@ sudo pacman -S --needed --noconfirm \
 
 sudo pacman -S --needed --noconfirm xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon mesa mesa-utils lib32-mesa vulkan-tools libva-mesa-driver
 sudo pacman -S --needed --noconfirm wayland xorg-xwayland rofi-wayland hyprpaper hyprlock
-##################################
-
-################################## Multilib
-echo "Enable Multilib..."
-FILE="/etc/pacman.conf"
-
-if grep -q "^\s*\[multilib\]" "$FILE"; then
-  sudo sed -i '/^\s*#\?\s*\[multilib\]/,/^\s*#\?\s*Include/ s/^\s*#\s*//' "$FILE"
-else
-  printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' | sudo tee -a "$FILE" > /dev/null
-fi
-
-sudo pacman -Syu --noconfirm
 ##################################
 
 ################################## Tools

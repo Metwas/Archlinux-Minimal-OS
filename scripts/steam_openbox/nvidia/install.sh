@@ -1,12 +1,25 @@
 #!/bin/bash
-echo "Initializing minimal Steam DWM (Nvidia) ArchLinux install..."
+echo "Initializing minimal Steam (Nvidia) ArchLinux install..."
 set -e
 
 USERNAME="$USER"
 USERID="$UID"
 
 ################################## Creating User
-sudo usermod -aG video,input,render,wheel,seat $USER
+sudo usermod -aG video,input,render,wheel $USER
+##################################
+
+################################## Multilib
+echo "Enable Multilib..."
+FILE="/etc/pacman.conf"
+
+if grep -q "^\s*\[multilib\]" "$FILE"; then
+  sudo sed -i '/^\s*#\?\s*\[multilib\]/,/^\s*#\?\s*Include/ s/^\s*#\s*//' "$FILE"
+else
+  printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' | sudo tee -a "$FILE" > /dev/null
+fi
+
+sudo pacman -Syu --noconfirm
 ##################################
 
 ################################## Update
@@ -33,20 +46,7 @@ sudo pacman -S --needed --noconfirm \
 
 sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils linux-headers
 sudo pacman -S --needed --noconfirm vulkan-icd-loader lib32-vulkan-icd-loader vulkan-tools mesa mesa-utils
-sudo pacman -S --needed --noconfirm xorg-server xorg-xinit xorg-xrandr steam dwm xterm unclutter
-##################################
-
-################################## Multilib
-echo "Enable Multilib..."
-FILE="/etc/pacman.conf"
-
-if grep -q "^\s*\[multilib\]" "$FILE"; then
-  sudo sed -i '/^\s*#\?\s*\[multilib\]/,/^\s*#\?\s*Include/ s/^\s*#\s*//' "$FILE"
-else
-  printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' | sudo tee -a "$FILE" > /dev/null
-fi
-
-sudo pacman -Syu --noconfirm
+sudo pacman -S --needed --noconfirm xorg-server xorg-xinit xorg-xrandr steam openbox xterm unclutter
 ##################################
 
 ################################## Tools
@@ -139,14 +139,21 @@ EOF
 
 cat > ~/.xinitrc <<'EOF'
 #!/bin/sh
+exec openbox-session
+EOF
+
+chmod +x ~/.xinitrc
+
+sudo mkdir -p ~/.config/openbox
+cat > ~/.config/openbox/autostart <<'EOF'
+#!/bin/sh
 xset -dpms
 xset s off
 xset s noblank
 
-exec steam -tenfoot
+steam -gamepadui
 EOF
 
-chmod +x ~/.xinitrc
 ##################################
 
 ################################## Autologin
